@@ -41,6 +41,8 @@ class UserInputController extends Controller
 
         $request->validate([
             'input_content_problem' => 'required|max:255',
+        ], [
+            'input_content_problem.required' => 'お困りごとを入力ください',
         ]);
       
         //$request->user()->user_inputs()->create($request->only('input_content_problem'));
