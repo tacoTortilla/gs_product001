@@ -42,11 +42,16 @@
               <input type="text" name="image_path" id="image_path" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline">
               <label for="user_input" class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">成功事例画像URL</label>
               <input type="text" name="success_cases" id="success_cases" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-              
-              @error('name')
-              <span class="text-red-500 text-xs italic">{{ $message }}</span>
-              @enderror
             </div>
+            @if ($errors->any())
+                <div class="mb-4 text-red-500 text-sm">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>※ {{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Input</button>
           </form>
         </div>

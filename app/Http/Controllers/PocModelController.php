@@ -38,13 +38,29 @@ class PocModelController extends Controller
     {
         //
         $request->validate([
+            'key_input_id' => 'required',
             'name' => 'required|max:255',
+            'description' => 'required',
+            'category' => 'required',
+            'cost_estimate' => 'required',
+            'provider' => 'required',
+            'image_path' => 'required',
+            'success_cases' => 'required',
+        ], [
+            'key_input_id.required' => 'キーワードを選択してください。',
+            'name.required' => '名前を入力してください。',
+            'description.required' => '説明を入力してください。',
+            'category.required' => 'カテゴリを入力してください。',
+            'cost_estimate.required' => '費用を入力してください。',
+            'provider.required' => '会社を入力してください。',
+            'image_path.required' => 'システム画像を入力してください。',
+            'success_cases.required' => '事例画像を入力してください。',
         ]);
       
         //Poc_model::create($request->all());
         Poc_model::create($request->except(['_token']));
 
-        return redirect()->route('poc_models.index');
+        return redirect()->route('poc_models.index')->with('success', '登録しました');
 
     }
 
