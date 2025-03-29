@@ -83,6 +83,7 @@ class KeyInputController extends Controller
         //
         $key_input->delete();
 
-        return redirect()->route('key_inputs.show');
+        //return redirect()->route('key_inputs.show');
+        return redirect()->route('key_inputs.create');
     }
 }

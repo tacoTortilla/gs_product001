@@ -53,7 +53,10 @@ class PocSlectController extends Controller
         ]);
       
         //dd($request);
-        $request->user()->poc_slects()->create($request->only('key_input_id'));
+        $request->user()->poc_slects()->create([
+            'key_input_id' => $request->input('key_input_id'),
+            'poc_model_id' => $request->input('poc_model_id'),
+        ]);
         return redirect()->route('poc_slects.index');
     }
 
